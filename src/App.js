@@ -135,15 +135,15 @@ const App = () => {
                           element={<Championships />}
                         />
                         <Route
-                          path="/league-overview"
+                          path="/leagues/:leagueName/:leagueID"
                           element={<LeagueOverview />}
                         />
                         <Route path="/leagues" element={<Leagues />} />
 
-                        <Route
+                        {/* <Route
                           path="/leagues/:leagueName/:leagueID"
                           element={<LeagueDetail />}
-                        />
+                        /> */}
 
                         <Route
                           path="/fixture/:FixtureID"
