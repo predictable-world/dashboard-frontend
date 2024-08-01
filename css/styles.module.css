@@ -1,0 +1,119 @@
+.list_item {
+  position: relative;
+  cursor: grab;
+  background: var(--widget);
+  padding: 0 22px;
+  overflow: visible;
+}
+.list_item * {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+}
+.list_item input {
+  cursor: grab;
+}
+.list_item input.title {
+  max-width: 150px;
+  margin-top: -2px;
+}
+@media screen and (min-width: 414px) {
+  .list_item input.title {
+    max-width: 250px;
+  }
+}
+.list_item:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--border);
+  z-index: 1;
+  background: var(--widget);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.list_item .category {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.list_item .category_label {
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.list_item .secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.list_item .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color var(--transition);
+}
+.list_item .content:hover {
+  border-color: transparent;
+}
+.list_item .delete {
+  opacity: 0;
+  transition: opacity var(--transition);
+  color: var(--highlight) !important;
+}
+.list_item:hover:after,
+.list_item:hover .category_label,
+.list_item:hover .delete {
+  opacity: 1;
+}
+
+.planner_item {
+  padding: 15px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+.planner_item.light {
+  background-color: var(--body);
+}
+.planner_item.dark {
+  background-color: var(--border);
+}
+.planner_item.checked {
+  background-color: var(--widget);
+  border-color: var(--border);
+}
+.planner_item .title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--header);
+}
+.planner_item .timestamp {
+  color: #fff !important;
+}
+@media screen and (min-width: 414px) {
+  .planner_item {
+    padding: 20px 24px;
+  }
+}
+
+.category_color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}/*# sourceMappingURL=styles.module.css.map */
