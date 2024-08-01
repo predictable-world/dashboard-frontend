@@ -16,22 +16,6 @@ import BallPossessionAreaChart from "@widgets/BallPossessionAreaChart";
 import LineDotsChart from "@widgets/LineDotsChart";
 import WidgetGroup from "@components/WidgetGroup";
 
-const widgets = {
-  league_rating: <LeagueRating />,
-  matches_overview: <MatchesOverview />,
-  team_stats: (
-    <WidgetGroup>
-      <TeamStatsCard id="manunited" value={14} />
-      <TeamStatsCard id="chelsea" value={12} />
-    </WidgetGroup>
-  ),
-  team_pulse: <TeamPulse />,
-  calendar: <GamesCalendar />,
-  standings: <Standings />,
-  ball_possession: <BallPossessionAreaChart />,
-  dots_chart: <LineDotsChart />,
-};
-
 const LeagueOverview = () => {
   const { leagueID } = useParams();
   const [leagueDetail, setLeagueDetail] = useState(null);
@@ -81,6 +65,24 @@ const LeagueOverview = () => {
         setFixturesLoading(false);
       });
   }, [leagueID]);
+
+  const widgets = {
+    league_rating: (
+      <LeagueRating title={leagueDetail?.league?.name || "Loading..."} />
+    ),
+    matches_overview: <MatchesOverview />,
+    team_stats: (
+      <WidgetGroup>
+        <TeamStatsCard id="manunited" value={14} />
+        <TeamStatsCard id="chelsea" value={12} />
+      </WidgetGroup>
+    ),
+    team_pulse: <TeamPulse />,
+    calendar: <GamesCalendar />,
+    standings: <Standings />,
+    ball_possession: <BallPossessionAreaChart />,
+    dots_chart: <LineDotsChart />,
+  };
 
   return (
     <>
