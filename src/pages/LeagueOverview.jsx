@@ -68,7 +68,10 @@ const LeagueOverview = () => {
 
   const widgets = {
     league_rating: (
-      <LeagueRating title={leagueDetail?.league?.name || "Loading..."} />
+      <LeagueRating
+        image={leagueDetail?.league?.logo || "Loading..."}
+        title={leagueDetail?.league?.name || "Loading..."}
+      />
     ),
     matches_overview: <MatchesOverview />,
     team_stats: (

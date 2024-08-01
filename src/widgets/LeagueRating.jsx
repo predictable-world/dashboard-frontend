@@ -34,11 +34,7 @@ const LeagueRating = ({ title, image }) => {
 
   return (
     <Spring className="card d-flex flex-column justify-content-between g-20 card-padded">
-      <LeagueHeader
-        img={english_premier}
-        title={title}
-        subtitle="Regular Championship"
-      />
+      <LeagueHeader img={image} title={title} subtitle="Regular Championship" />
       <AnimatedCount className="h1 large" count={4.2} decimals={1} />
       <div className="d-flex flex-column g-24">
         {Object.keys(data).map((key, index) => (
