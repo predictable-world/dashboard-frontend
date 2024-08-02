@@ -10,7 +10,7 @@ import { useThemeProvider } from "@contexts/themeContext";
 // assets
 import english_premier from "@assets/clubs/english_premier.webp";
 
-const LeagueRating = ({ title, image }) => {
+const LeagueRating = ({ title, image, subtitle }) => {
   const { theme } = useThemeProvider();
   const data = {
     "5 stars": 400,
@@ -34,7 +34,7 @@ const LeagueRating = ({ title, image }) => {
 
   return (
     <Spring className="card d-flex flex-column justify-content-between g-20 card-padded">
-      <LeagueHeader img={image} title={title} subtitle="Regular Championship" />
+      <LeagueHeader img={image} title={title} subtitle={subtitle} />
       <AnimatedCount className="h1 large" count={4.2} decimals={1} />
       <div className="d-flex flex-column g-24">
         {Object.keys(data).map((key, index) => (

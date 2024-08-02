@@ -19,7 +19,7 @@ import WidgetGroup from "@components/WidgetGroup";
 const LeagueOverview = () => {
   const { leagueID } = useParams();
   const [leagueDetail, setLeagueDetail] = useState(null);
-  const [fixtures, setFixtures] = useState(null);
+  const [fixtures, setFixtures] = useState([]); // Initialize fixtures as an empty array
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [fixturesLoading, setFixturesLoading] = useState(true);
@@ -57,6 +57,7 @@ const LeagueOverview = () => {
     )
       .then((response) => response.json())
       .then((result) => {
+        console.log("Fixtures:", result.response);
         setFixtures(result.response);
         setFixturesLoading(false);
       })
@@ -66,14 +67,17 @@ const LeagueOverview = () => {
       });
   }, [leagueID]);
 
+  const lastSeason = leagueDetail?.seasons?.slice(-1)[0];
+
   const widgets = {
     league_rating: (
       <LeagueRating
-        image={leagueDetail?.league?.logo || "Loading..."}
+        image={leagueDetail?.league?.logo}
         title={leagueDetail?.league?.name || "Loading..."}
+        subtitle={`${leagueDetail?.country?.name} - ${lastSeason?.year}`}
       />
     ),
-    matches_overview: <MatchesOverview />,
+    matches_overview: <MatchesOverview fixturesList={fixtures} />,
     team_stats: (
       <WidgetGroup>
         <TeamStatsCard id="manunited" value={14} />
